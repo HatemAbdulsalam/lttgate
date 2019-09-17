@@ -1,0 +1,7 @@
+{
+  "name": "LttGate_App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

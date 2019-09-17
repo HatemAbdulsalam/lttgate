@@ -1,0 +1,36 @@
+ 
+ ion-content{
+   ion-card{
+     margin-top: 100px;
+     border-radius: 30px;
+ 
+   }
+ }
+ ion-input{
+  margin-top: 10px;
+}
+ 
+.cardlogin{
+  // background: linear-gradient(90deg, rgba(2,126,250,1) 0%, rgba(58,105,181,1) 26%, rgba(93,168,240,1) 64%, rgba(45,52,62,1) 100%);
+  ion-button{
+    --box-shadow: none;
+    --background: linear-gradient(90deg, rgba(69,149,255,1) 0%, rgba(69,149,255,1) 33%, rgba(104,207,254,1) 66%, rgba(104,207,254,1) 100%);}
+h2{
+  text-align: center;
+  color: #1592F1;
+}
+}
+ion-content{
+ }
+ion-item{
+
+  height: 45px;
+  ion-input{
+    color: #1592F1;
+    margin: 1px;
+    height: 30px;
+   }
+   ion-icon{
+ color: #1592F1;
+   }
+ }

@@ -1,0 +1,29 @@
+<ion-header dir="rtl">  
+  <ion-toolbar color="primary">  
+       <ion-buttons slot="start">
+               <ion-menu-button  ></ion-menu-button>
+      </ion-buttons>
+      <p>
+       LTTGate     
+     </p>
+    </ion-toolbar>  
+</ion-header>  
+   <ion-content dir="rtl" fullscreen>  
+           <ion-card class="ion-padding">
+               <ion-card-header>
+                 <ion-card-subtitle> </ion-card-subtitle>
+                 <ion-card-title> بيانات الموظف</ion-card-title>
+               </ion-card-header>
+                      <ion-card-content  *ngFor="let item of  AccessLog" >
+                          <h2> التاريخ </h2>   <ion-label>   {{item.logDate}} </ion-label>
+                          <h2> زمن الحضور </h2>    <ion-label>   {{item.logTime}} </ion-label>
+                          <h2> الاسم </h2>    <ion-label>   {{item.ename}} </ion-label>
+                          <h2> الرقم الوظيفي </h2>   <ion-label>   {{item.eid}} </ion-label>
+                          <h2> اسم المستخدم </h2>   <ion-label>   {{item.userName}} </ion-label>
+                          <h2> رمز البصمة </h2>   <ion-label>   {{item.eni}} </ion-label>
+                          <h2> الزمن المفترض للخروج </h2> <ion-label> {{item.supposedTimeOut}} </ion-label>
+                          <h2> زمن الانصراف </h2>  <ion-label>   {{item.timeOut}} </ion-label>
+                      </ion-card-content>
+             </ion-card>
+    
+</ion-content>  
