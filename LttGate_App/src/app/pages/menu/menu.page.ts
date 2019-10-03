@@ -41,7 +41,7 @@ selectpath = '';
   loggedOut(){
     localStorage.removeItem('token');
     // this.alertify.message('تم الخروج');
-     this.router.navigate(['']);
+     this.router.navigate(['login']);
   }
 
 }

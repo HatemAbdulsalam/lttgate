@@ -31,7 +31,7 @@ namespace LttGate.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> login(UserForLoginDto userForLoginDto)
         {
-             var UserFromRepo = await _repo.Login(userForLoginDto.UserName, userForLoginDto.Password);
+             var UserFromRepo = await _repo.Login(userForLoginDto.UserName.Trim(), userForLoginDto.Password.Trim());
             if (UserFromRepo == null)
                 return Unauthorized();
             var claims = new[]{

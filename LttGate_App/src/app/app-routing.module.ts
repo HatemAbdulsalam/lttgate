@@ -4,9 +4,9 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    {path: 'menu',   loadChildren: './pages/menu/menu.module#MenuPageModule' },
-   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+    { path: '', redirectTo: 'menu/home', pathMatch: 'full' },
+    {path: 'menu',   loadChildren: './pages/menu/menu.module#MenuPageModule' , canActivate:[AuthGuard]},
+    { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   
   // { path: '', runGuardsAndResolvers:'always', canActivate:[AuthGuard],children:[
   //   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },

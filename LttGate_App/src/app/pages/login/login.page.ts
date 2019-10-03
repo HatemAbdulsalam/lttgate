@@ -26,12 +26,16 @@ export class LoginPage implements OnInit {
     }
   }
   login(){
- this.authService.login(this.model).subscribe(
-  next=>{ this.presentAlert('تم الدخول بنجاح') ;
-    } ,
-  error=>{this.presentAlert('خطأ فى تسجيل الدخول')} ,
-  ()=> {this.router.navigate(['/menu/home'])}
-)
+    if (navigator.onLine) {
+      this.authService.login(this.model).subscribe(
+        next=>{ this.presentAlert('تم الدخول بنجاح') ;
+          } ,
+        error=>{this.presentAlert(error)} ,
+        ()=> {this.router.navigate(['/menu/home'])}
+      )      } else{
+        this.presentAlert(' لا يوجد اتصال بالانترنت') ;
+      }
+
 
   }
   loggedIn(){
