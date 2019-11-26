@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using LttGate.API.Data;
+using LttGate.API.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LttGate.API.Controllers
@@ -16,19 +17,22 @@ namespace LttGate.API.Controllers
                       _repo = Repo;
         }
 
-     [HttpGet("{id}")]
-        public async Task<IActionResult> getdataByID(int id)
+     [HttpGet]
+        public async Task<IActionResult> getdataByID([FromQuery]logdataParams logdataParams)
         {
-           var Vacationdata = await _repo.GetLogDateByIdAsync(id);
+             
+ 
+           var Vacationdata = await _repo.GetLogDateByIdAsync(logdataParams);
+           Response.AddPagination(Vacationdata.CurrentPage, Vacationdata.PageSize, Vacationdata.TotalCount, Vacationdata.TotalPages);
             return Ok(Vacationdata);
 
         }
-         [HttpGet("EF/{id}")]
-        public async Task<IActionResult> getefdataByID(int id)
+         [HttpGet("EF")]
+        public async Task<IActionResult> getefdataByID([FromQuery]logdataParams logdataParams)
         {
-           var Vacationdata = await _repo.GetLogDateEFByIdAsync(id);
+             var Vacationdata = await _repo.GetLogDateEFByIdAsync(logdataParams);
+           Response.AddPagination(Vacationdata.CurrentPage, Vacationdata.PageSize, Vacationdata.TotalCount, Vacationdata.TotalPages);
             return Ok(Vacationdata);
-
         }
 
     }

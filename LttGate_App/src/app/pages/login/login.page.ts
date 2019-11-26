@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {     AuthService } from 'src/app/services/AuthService.service';
+import { AuthService } from 'src/app/services/AuthService.service';
 import { AlertController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 
@@ -10,66 +10,67 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  model : any={} ;
-  constructor(private authService : AuthService , public alertController: AlertController , private router: Router) { }
-  username: string ='';
-  password: string ='';
+  model: any = {};
+  constructor(private authService: AuthService, public alertController: AlertController, private router: Router) { }
+  username: string = '';
+  password: string = '';
   showPwd: boolean = false;
-  passwordType:string = 'password';
-  iconname:string = 'eye';
+  passwordType: string = 'password';
+  iconname: string = 'eye';
 
   ngOnInit() {
     this.showPwd = false;
-    if(this.authService.loggedIn())
-    {    
-      
+    if (this.authService.loggedIn()) {
+
     }
   }
-  login(){
+  login() {
     if (navigator.onLine) {
       this.authService.login(this.model).subscribe(
-        next=>{ this.presentAlert('تم الدخول بنجاح') ;
-          } ,
-        error=>{this.presentAlert(error)} ,
-        ()=> {this.router.navigate(['/menu/home'])}
-      )      } else{
-        this.presentAlert(' لا يوجد اتصال بالانترنت') ;
-      }
+        next => {
+          this.presentAlert('تم الدخول بنجاح');
+        },
+        error => { this.presentAlert('خطأ في تسجيل الدخول') },
+        () => { this.router.navigate(['/menu/home']) }
+      )
+    } 
+    else {
+      this.presentAlert(' لا يوجد اتصال بالانترنت');
+    }
 
 
   }
-  loggedIn(){
-  //  const token = localStorage.getItem('token');
-  //  return !! token;
-     return this.authService.loggedIn();
+  loggedIn() {
+    //  const token = localStorage.getItem('token');
+    //  return !! token;
+    return this.authService.loggedIn();
   }
 
-  togglepassword(){
-if(this.showPwd)
-{
-  this.showPwd= false;
-  this.passwordType = 'password';
-  this.iconname = 'eye';
-}
-else{
-  this.showPwd= true;
-  this.passwordType = 'text';
-  this.iconname = 'eye-off';
-}
+  togglepassword() {
+    if (this.showPwd) {
+      this.showPwd = false;
+      this.passwordType = 'password';
+      this.iconname = 'eye';
+    }
+    else {
+      this.showPwd = true;
+      this.passwordType = 'text';
+      this.iconname = 'eye-off';
+    }
   }
- 
-  async presentAlert(Message : string) {
+
+  async presentAlert(Message: string) {
     const alert = await this.alertController.create({
       header: '',
       subHeader: 'تسجيل الدخول',
-      message:   Message,
+      message: Message,
       buttons: ['OK']
     });
 
-    
+
 
     await alert.present();
   }
 
-   
+
 }   

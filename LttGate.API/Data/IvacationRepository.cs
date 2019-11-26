@@ -6,7 +6,7 @@ namespace LttGate.API.Data
 {
     public interface IvacationRepository
     {
-              Task<IEnumerable<Furlough>> GetDataByIdAsync(int id);
+         Task<Furlough> GetDataByIdAsync(int id);
 
     }
 }

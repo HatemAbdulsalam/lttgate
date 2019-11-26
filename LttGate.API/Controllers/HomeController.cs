@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using LttGate.API.Data;
+using LttGate.API.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LttGate.API.Controllers
@@ -17,9 +18,12 @@ namespace LttGate.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> getdata()
+ 
+        public async Task<IActionResult> getdata([FromQuery]acssessParams acssessParams)
         {
-            var acssessdata = await _repo.GetDataAsync();
+            var acssessdata = await _repo.GetDataAsync(acssessParams);
+              Response.AddPagination(acssessdata.CurrentPage, acssessdata.PageSize, acssessdata.TotalCount, acssessdata.TotalPages);
+
             return Ok(acssessdata);
 
         }

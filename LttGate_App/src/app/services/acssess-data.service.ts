@@ -4,8 +4,7 @@ import { HttpClient} from '@angular/common/http';
 
 import { Observable } from 'rxjs';  
  import { LogData } from '../LogData';
-  import { AccessLog } from '../AccessLog';
- 
+  
 @Injectable( )
 
 export class AcssessDataService {
@@ -17,6 +16,7 @@ export class AcssessDataService {
     return this.http.get<any[]>("http://localhost:5000/api/values");
 
   }
+  
   
 } 
  

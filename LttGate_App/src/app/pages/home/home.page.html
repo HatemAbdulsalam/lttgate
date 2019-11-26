@@ -3,9 +3,9 @@
        <ion-buttons slot="start">
                <ion-menu-button  ></ion-menu-button>
       </ion-buttons>
-      <p>
-       LTTGate     
-     </p>
+      <h3  >
+       LTT GATE  
+     </h3>
     </ion-toolbar>  
 </ion-header>  
    <ion-content dir="rtl" fullscreen>  
@@ -14,15 +14,22 @@
                  <ion-card-subtitle> </ion-card-subtitle>
                  <ion-card-title> بيانات الموظف</ion-card-title>
                </ion-card-header>
-                      <ion-card-content  *ngFor="let item of  AccessLog" >
-                          <h2> التاريخ </h2>   <ion-label>   {{item.logDate}} </ion-label>
-                          <h2> زمن الحضور </h2>    <ion-label>   {{item.logTime}} </ion-label>
-                          <h2> الاسم </h2>    <ion-label>   {{item.ename}} </ion-label>
-                          <h2> الرقم الوظيفي </h2>   <ion-label>   {{item.eid}} </ion-label>
-                          <h2> اسم المستخدم </h2>   <ion-label>   {{item.userName}} </ion-label>
-                          <h2> رمز البصمة </h2>   <ion-label>   {{item.eni}} </ion-label>
-                          <h2> الزمن المفترض للخروج </h2> <ion-label> {{item.supposedTimeOut}} </ion-label>
-                          <h2> زمن الانصراف </h2>  <ion-label>   {{item.timeOut}} </ion-label>
+                      <ion-card-content  >
+                          <h2> الاسم </h2>    <ion-label>   {{AccessLog?.ename}} </ion-label>
+                          <h2> الرقم الوظيفي </h2>   <ion-label>   {{AccessLog?.eid}} </ion-label>
+                          <h2> اسم المستخدم </h2>   <ion-label>   {{AccessLog?.userName}} </ion-label>
+                          <h2> رمز البصمة </h2>   <ion-label>   {{AccessLog?.eni}} </ion-label>
+                          <div *ngIf="AccessLog?.logTime != null ">
+                          <h2> زمن الحضور </h2>    <ion-label>   {{AccessLog?.logTime}} </ion-label>
+                          <h2> الزمن المفترض للخروج </h2> <ion-label> {{AccessLog?.supposedTimeOut}} </ion-label>
+                             <div *ngIf="AccessLog?.timeOut != null ">
+                          <h2> زمن الانصراف </h2>  <ion-label>   {{AccessLog?.timeOut}} </ion-label>
+                             </div>
+                          </div>
+                           <div *ngIf="AccessLog?.logTime === null ">
+                            <h2>لم تقم بإدراج بصمة الحضور اليوم </h2>
+                           </div>
+
                       </ion-card-content>
              </ion-card>
     

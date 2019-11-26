@@ -7,6 +7,64 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+
+<ion-grid>
+<ion-row >
+ <ion-col>
+ <h3>
+التاريخ </h3>
+
+     </ion-col>
+    <ion-col> <h3>
+
+التوقيت </h3>
+
+    </ion-col>
+    <ion-col> <h3>
+
+ الحاله </h3>
+
+    </ion-col>
+  </ion-row>
+ 
+  <ion-row  *ngFor="let item of  acssess">
+    <ion-col>
+ 
+    <div class="center"> {{datepipe.transform(item?.logDate, 'yyyy-MM-dd')}}</div>
+     </ion-col>
+    <ion-col>
+    <div class="center"> {{item.logTime}}</div>
+    </ion-col>
+    <ion-col *ngIf="item.inOut === 'IN'">
+     <div class="center">
+حضور</div>
+    </ion-col>
+        <ion-col *ngIf="item.inOut === 'OUT'">
+         <div class="center">
+إنصراف</div>
+    </ion-col> 
+
+      <ion-col *ngIf="item.inOut === 'UNAUTH'">
+         <div class="center">
+غير موثوق</div>
+    </ion-col>
+
+         <ion-col *ngIf="item.inOut === 'F2' || item.inOut === 'F1' ">
+         <div class="center">
+         اذن خروج
+ </div >
+    </ion-col>
+
+    
+  </ion-row>
+  </ion-grid>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="تحميل المزيد...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

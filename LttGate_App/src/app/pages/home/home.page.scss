@@ -4,10 +4,12 @@ color:#000000;
 margin-top: 20px; 
 }
 
-ion-toolbar{
-    p{
-        text-align: center;
-        font-family: 'DroidSans' !important;
+ 
+h3{
+    text-align: center;
 
-     }
+ }
+// text-align: center;
+ion-content{
+    --ion-background-color:#f4f4f4 ;
 }

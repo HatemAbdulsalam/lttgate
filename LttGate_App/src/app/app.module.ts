@@ -14,6 +14,23 @@ import { AcssessDataService } from './services/acssess-data.service';
 import { AuthService } from './services/AuthService.service';
 import { ErrorInterceptorProvidor } from './services/error.interceptor';
 import { AuthGuard } from './guards/auth.guard';
+
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { SMS } from '@ionic-native/sms/ngx';
+import { ContactserviceService } from './services/Contactservice.service';
+import { ContactResolver } from './resolvers/ContactResolver';
+import { VactionResolver } from './resolvers/VactionResolver';
+import { VacationService } from './services/Vacation.service';
+import { AdvertService } from './services/Advert.service';
+import { AdvertResolver } from './resolvers/AdvertResolver';
+import { DatePipe } from '@angular/common';
+import { AcssessResolver } from './resolvers/AcssessResolver';
+import { AcssessService } from './services/Acssess.service';
+import { HomeResolver } from './resolvers/HomeResolver';
+import { LogDataVactionResolver } from './resolvers/LogDataVactionResolver';
+import { LogDataVactionService } from './services/LogDataVaction.service';
+import { LogDataEFVactionResolver } from './resolvers/LogDataEFVactionResolver';
+ 
  
  
 @NgModule({
@@ -27,7 +44,22 @@ import { AuthGuard } from './guards/auth.guard';
     AuthService,
     AuthGuard,
     ErrorInterceptorProvidor,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    CallNumber,
+    SMS,
+    ContactserviceService,
+    ContactResolver,
+    VacationService,
+    VactionResolver,
+    AdvertResolver,
+    AdvertService,
+    AcssessResolver,
+    AcssessService,
+    HomeResolver,
+    LogDataVactionResolver,
+    LogDataVactionService,
+    LogDataEFVactionResolver,
+    [DatePipe]
   ],
   bootstrap: [AppComponent]
 })

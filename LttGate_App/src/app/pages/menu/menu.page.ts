@@ -16,15 +16,37 @@ pages = [
   {
     title:'الحضور والانصراف',
     url:'/menu/attendance',
-    icon: 'clock'
+    icon: 'time'
 
   },  
   {   
-     title:'الاجازات',
+     title:'رصيد الاجازات',
     url:'/menu/vacation',
     icon: 'list-box'
 
-  }   
+  }   ,
+  {
+    title:'إعلانات الشركة',
+    url:'/menu/advert',
+    icon: 'megaphone'
+   }, 
+  {
+    title:'سجل الاجازات الطارئة',
+    url:'/menu/logefvaction',
+    icon: 'paper'
+   },  
+  {
+    title:'سجل الاجازات السنوية',
+    url:'/menu/logvaction',
+    icon: 'paper'
+
+  }, 
+  {
+    title:'هواتف الشركة',
+    url:'/menu/contact',
+    icon: 'contacts'
+   }  
+
 ];
 selectpath = '';
 

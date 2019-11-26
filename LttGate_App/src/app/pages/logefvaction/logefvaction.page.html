@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title> الإجازات الطارئة</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+<ion-grid>
+<ion-row >
+ <ion-col>
+ <h4>
+المدة</h4>
+
+     </ion-col>
+    <ion-col> 
+    <h4>
+من
+ </h4>
+
+    </ion-col>
+    <ion-col> 
+    <h4>
+ الي 
+ </h4>
+    </ion-col>
+
+        
+
+        <ion-col> 
+    <h4>
+ رصيد  
+ </h4>
+    </ion-col>
+
+  </ion-row>
+ 
+  <ion-row  *ngFor="let item of  logdata">
+
+
+    <ion-col>
+    <div class="center"> {{item.amountEf}}</div>
+    </ion-col>
+
+        <ion-col>
+    <div class="center"> {{datepipe.transform(item?.fromDate, 'yyyy-MM-dd')}}</div>
+     </ion-col>
+             <ion-col>
+    <div class="center"> {{datepipe.transform(item?.toDate, 'yyyy-MM-dd')}}</div>
+     </ion-col>
+        <ion-col>
+    <div class="center"> {{item.nextEf}}</div>
+    </ion-col>
+
+     
+
+ 
+ 
+ 
+    
+  </ion-row>
+  </ion-grid>
+
+ 
+
+</ion-content>

@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-  using LttGate.API.Models;
+using LttGate.API.Helper;
+using LttGate.API.Models;
 
 namespace LttGate.API.Data
 {
     public interface IacssessRepository
       {
-      Task<AccessLog> GetDataAsync ( );
+      Task<PagedList<AccessLog>> GetDataAsync( acssessParams acssessParams);
 
-      Task<IEnumerable<EmployeeViewModel>> GetDataByIdAsync(int id);
+ 
+      Task<EmployeeViewModel> GetDataByIdAsync(int id);
 
     }
 }

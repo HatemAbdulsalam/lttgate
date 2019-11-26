@@ -5,9 +5,10 @@ import {  AcssessDataService } from '../../services/acssess-data.service';
 import { HttpClient} from '@angular/common/http';  
  import { map } from 'rxjs/operators';  
 import { LogData } from '../../LogData';
-import { AccessLog } from '../../AccessLog';
-import { AuthService } from '../../services/AuthService.service';
+ import { AuthService } from '../../services/AuthService.service';
 import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeViewModel } from 'src/app/models/EmployeeViewModel';
  
 
 @Component({
@@ -17,28 +18,19 @@ import { environment } from 'src/environments/environment';
 })
 export class HomePage implements OnInit{
 
+  AccessLog:EmployeeViewModel;
 
+  constructor( private route: ActivatedRoute) { }
 
+  ngOnInit() {
+    this.route.data.subscribe(
+      data => {
+        this.AccessLog = data['home'];
+         
+      } )
+  }
 
-  AccessLog:any;
-
-
-
-  constructor(private AcssessData : AcssessDataService, private authService : AuthService , private http: HttpClient) {}
-  ngOnInit() {   
-    this.authService.decodedToken =this.authService.jwtHelper.decodeToken(localStorage.getItem('token'));
-     this.loadData()
-
-   }
- loadData(){
-  this.http.get(environment.apiurl+'home/'+ this.authService.decodedToken.nameid ).subscribe(
-      response => {
-      this.AccessLog =response;
-   },
-   error =>{console.log(error);}
-
-    ) 
- } 
+  
   }
     
  

@@ -14,11 +14,10 @@ namespace LttGate.API.Data
             _context = context;
         }
 
-        public async Task<IEnumerable<Furlough>> GetDataByIdAsync(int id)
+        public async Task<Furlough> GetDataByIdAsync(int id)
         {
-             var vacationData = await _context.Furlough.Where(x => x.Eid == getEidUserByid(id)).ToListAsync() ;
-
-                   return vacationData;
+             var vacationData = await _context.Furlough.Where(x => x.Eid == getEidUserByid(id)).FirstOrDefaultAsync() ;
+                return vacationData;
         }
 
           public string getEidUserByid(int id)

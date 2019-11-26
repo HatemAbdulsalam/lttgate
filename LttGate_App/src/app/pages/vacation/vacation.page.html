@@ -8,5 +8,23 @@
 </ion-header>
 
 <ion-content>
+<ion-list>
+        <ion-list-header>
+         <h3>
+           الرقم الوظيفي:  {{vaction?.eid}}
+            </h3>
 
+        </ion-list-header>
+        <ion-item>
+          <ion-label>رصيد الاجازة السنوية	</ion-label>
+          <ion-note slot="end"  color="primary"> <h3> {{vaction?.furloughEid}} </h3></ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>رصيد الاجازة الطارئة	</ion-label>
+          <ion-note slot="end" color="secondary"> <h3> {{vaction?.ef}} </h3></ion-note>
+        </ion-item>
+
+
+      </ion-list>
 </ion-content>

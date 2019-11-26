@@ -13,7 +13,7 @@ namespace LttGate.API.Controllers
  
         public VacationController(IvacationRepository Repo   )
         {
-                      _repo = Repo;
+             _repo = Repo;
         }
 
 
@@ -21,8 +21,7 @@ namespace LttGate.API.Controllers
         public async Task<IActionResult> getdataByID(int id)
         {
            var Vacationdata = await _repo.GetDataByIdAsync(id);
-            return Ok(Vacationdata);
-
+          return Ok(Vacationdata);
         }
 
     }
