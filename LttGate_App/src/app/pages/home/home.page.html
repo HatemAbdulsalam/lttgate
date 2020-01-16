@@ -16,7 +16,7 @@
                </ion-card-header>
                       <ion-card-content  >
                           <h2> الاسم </h2>    <ion-label>   {{AccessLog?.ename}} </ion-label>
-                          <h2> الرقم الوظيفي </h2>   <ion-label>   {{AccessLog?.eid}} </ion-label>
+                          <h2> الرقم الوظيفي </h2>   <ion-label>   {{AccessLog?.mg}} {{AccessLog?.eid}} </ion-label>
                           <h2> اسم المستخدم </h2>   <ion-label>   {{AccessLog?.userName}} </ion-label>
                           <h2> رمز البصمة </h2>   <ion-label>   {{AccessLog?.eni}} </ion-label>
                           <div *ngIf="AccessLog?.logTime != null ">

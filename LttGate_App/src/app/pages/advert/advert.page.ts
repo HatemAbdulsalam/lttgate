@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdvertService } from 'src/app/services/Advert.service';
 import { Advert } from 'src/app/models/Advert';
 import { DatePipe } from '@angular/common'
+import { LoadingService } from 'src/app/services/Loading.service';
 
 @Component({
   selector: 'app-advert',
@@ -22,7 +23,7 @@ export class AdvertPage implements OnInit {
   advert:Advert[];
   page = 1;
    pagination: Pagination;
-  constructor(public datepipe: DatePipe , public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,private advertService: AdvertService ,private http: HttpClient   ) { }
+  constructor(private load:LoadingService ,public datepipe: DatePipe , public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,private advertService: AdvertService ,private http: HttpClient   ) { }
 
   ngOnInit() {
     this.route.data.subscribe(
@@ -30,6 +31,8 @@ export class AdvertPage implements OnInit {
         this.advert = data['advert'].result;
         this.pagination = data['advert'].pagination;
       } )
+      this.load.dismiss();
+
   }
   loadAdvert(infiniteScroll?) {
 

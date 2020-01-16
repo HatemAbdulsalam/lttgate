@@ -9,6 +9,7 @@ import { LogData } from '../../LogData';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeViewModel } from 'src/app/models/EmployeeViewModel';
+import { LoadingService } from 'src/app/services/Loading.service';
  
 
 @Component({
@@ -20,7 +21,7 @@ export class HomePage implements OnInit{
 
   AccessLog:EmployeeViewModel;
 
-  constructor( private route: ActivatedRoute) { }
+  constructor(private load:LoadingService , private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(
@@ -28,6 +29,8 @@ export class HomePage implements OnInit{
         this.AccessLog = data['home'];
          
       } )
+      this.load.dismiss();
+
   }
 
   

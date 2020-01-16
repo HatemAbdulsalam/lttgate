@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Acssess } from 'src/app/models/Acssess';
 import { DatePipe } from '@angular/common';
 import { AcssessService } from 'src/app/services/Acssess.service';
+import { LoadingService } from 'src/app/services/Loading.service';
 
 @Component({
   selector: 'app-attendance',
@@ -21,7 +22,7 @@ export class AttendancePage implements OnInit {
   acssess:Acssess[];
   page = 1;
    pagination: Pagination;
-   constructor(public datepipe: DatePipe , public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,
+   constructor(private load:LoadingService , public datepipe: DatePipe , public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,
     private acssessService: AcssessService ,private http: HttpClient   ) { }
 
   ngOnInit() {
@@ -29,8 +30,10 @@ export class AttendancePage implements OnInit {
       data => {
         this.acssess = data['acssess'].result;
         this.pagination = data['acssess'].pagination;
-        
+
       } )
+      this.load.dismiss();
+
   }
   loadContacts(infiniteScroll?) {
     this.acssessService.getAcssess(this.page, this.pagination.itemsPerPage)

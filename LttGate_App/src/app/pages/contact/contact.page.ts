@@ -9,6 +9,7 @@ import { Contact } from 'src/app/models/Contact';
 import { PaginationResult, Pagination } from 'src/app/models/Pagination';
 import { ContactserviceService } from 'src/app/services/Contactservice.service';
 import { ActivatedRoute } from '@angular/router';
+import { LoadingService } from 'src/app/services/Loading.service';
 
 @Component({
   selector: 'app-contact',
@@ -22,27 +23,22 @@ export class ContactPage implements OnInit {
    searchTerm: string;
    searching:boolean = false;
 
-   constructor(public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,private contactserviceService: ContactserviceService ,private http: HttpClient , private callnumber:CallNumber , private sms:SMS , tostcontroller:ToastController) { }
+   constructor(private load:LoadingService ,public loadingController: LoadingController ,public navCtrl: NavController,private route: ActivatedRoute,private contactserviceService: ContactserviceService ,private http: HttpClient , private callnumber:CallNumber , private sms:SMS , tostcontroller:ToastController) { }
 
   ngOnInit() {
+
      this.route.data.subscribe(
+
       data => {
         this.contact = data['contact'].result;
         this.pagination = data['contact'].pagination;
         
       } )
+      this.load.dismiss();
+
      }
 
-      async presentLoadingWithOptions() {
-        const loading = await this.loadingController.create({
-          spinner: "bubbles",
-          duration: 1000,
-          message: 'جاري التحميل...',
-          translucent: true,
-          cssClass: 'custom-class custom-loading'
-        });
-        return await loading.present();
-      }
+     
     
       searchChanged() {
         this.searching = true;

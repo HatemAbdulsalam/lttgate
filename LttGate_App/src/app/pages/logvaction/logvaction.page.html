@@ -37,21 +37,22 @@
     </ion-col>
 
   </ion-row>
- 
+ </ion-grid>
+ <ion-grid>
   <ion-row  *ngFor="let item of  logdata">
 
 
-    <ion-col width-20>
+    <ion-col col-2 >
     <div class="center"> {{item.amount}}</div>
     </ion-col>
 
-        <ion-col width-30 >
+        <ion-col col-4 >
     <div class="center"> {{datepipe.transform(item?.fromDate, 'yyyy-MM-dd')}}</div>
      </ion-col >
-             <ion-col width-30  >
+             <ion-col col-4  >
     <div class="center"> {{datepipe.transform(item?.toDate, 'yyyy-MM-dd')}}</div>
      </ion-col>
-        <ion-col width-20  >
+        <ion-col col-2  >
     <div class="center"> {{item.nexBala}}</div>
     </ion-col>
 

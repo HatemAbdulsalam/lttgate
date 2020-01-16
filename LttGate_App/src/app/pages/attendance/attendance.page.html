@@ -23,7 +23,7 @@
     </ion-col>
     <ion-col> <h3>
 
- الحاله </h3>
+ الحالة </h3>
 
     </ion-col>
   </ion-row>
@@ -38,10 +38,13 @@
     </ion-col>
     <ion-col *ngIf="item.inOut === 'IN'">
      <div class="center">
+     <ion-icon name="arrow-round-up"  color="success"></ion-icon>
 حضور</div>
     </ion-col>
         <ion-col *ngIf="item.inOut === 'OUT'">
          <div class="center">
+                  <ion-icon name="arrow-round-down"  color="danger"></ion-icon>
+
 إنصراف</div>
     </ion-col> 
 
@@ -55,7 +58,10 @@
          اذن خروج
  </div >
     </ion-col>
-
+ <ion-col *ngIf="item.inOut === null ">
+         <div class="center">
+  </div >
+    </ion-col>
     
   </ion-row>
   </ion-grid>

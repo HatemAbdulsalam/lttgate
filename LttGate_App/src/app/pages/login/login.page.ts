@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { AuthService } from 'src/app/services/AuthService.service';
 import { AlertController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
+import { Network } from '@ionic-native/network/ngx';
+import { LoadingService } from 'src/app/services/Loading.service';
 
 @Component({
   selector: 'app-login',
@@ -10,33 +12,55 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  model: any = {};
-  constructor(private authService: AuthService, public alertController: AlertController, private router: Router) { }
+  model: any = {
+    username:'',
+    password:''
+  };
+  constructor(private load:LoadingService ,private appReference: ApplicationRef,private authService: AuthService, public network: Network, public alertController: AlertController, private router: Router) {
+
+    this.network.onConnect().subscribe(() => {
+
+
+    });
+
+  }
   username: string = '';
   password: string = '';
   showPwd: boolean = false;
   passwordType: string = 'password';
   iconname: string = 'eye';
-
+concted:boolean  = true;
   ngOnInit() {
+
+   
+  
+
     this.showPwd = false;
     if (this.authService.loggedIn()) {
 
     }
   }
   login() {
-    if (navigator.onLine) {
-      this.authService.login(this.model).subscribe(
-        next => {
-          this.presentAlert('تم الدخول بنجاح');
-        },
-        error => { this.presentAlert('خطأ في تسجيل الدخول') },
-        () => { this.router.navigate(['/menu/home']) }
-      )
-    } 
-    else {
-      this.presentAlert(' لا يوجد اتصال بالانترنت');
+   
+    if(this.model.username == "" || this.model.password == "" ){
+      this.presentAlert('قم بادخال اسم المستخدم وكلمة المرور');
+      return;
+
+
     }
+    this.authService.login(this.model).subscribe(
+      next => {
+        this.load.dismiss(),
+        this.presentAlert('تم الدخول بنجاح');
+      },
+ 
+      error => {     
+          this.load.dismiss();
+        this.presentAlert('خطأ في تسجيل الدخول') },
+      () => { this.router.navigate(['/menu/home']) 
+    }
+    )
+
 
 
   }
@@ -71,6 +95,8 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
+  
 
 
 }   

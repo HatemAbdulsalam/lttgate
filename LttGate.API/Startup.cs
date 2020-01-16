@@ -39,7 +39,10 @@ namespace LttGate.API
         public void ConfigureServices(IServiceCollection services)
         {
             var ConnectionString = Configuration.GetConnectionString("MbkDbConstr");
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(ConnectionString, builder => builder.UseRowNumberForPaging()));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(ConnectionString, builder =>   builder.UseRowNumberForPaging()));
+           var ConnectionString2 = Configuration.GetConnectionString("MbkDbConstr2");
+            services.AddDbContext<DataContextt>(options => options.UseSqlServer(ConnectionString2, builder => builder.UseRowNumberForPaging()));
+
             services.AddMvc();
             services.AddCors();
             services.AddScoped<IacssessRepository, acssessRepository>();
@@ -48,6 +51,7 @@ namespace LttGate.API
             services.AddScoped<IlogDataVacationRepository, logDataVacationRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<IAdvertRepository, AdvertRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 

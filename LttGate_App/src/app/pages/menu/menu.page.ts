@@ -16,9 +16,13 @@ pages = [
   {
     title:'الحضور والانصراف',
     url:'/menu/attendance',
-    icon: 'time'
-
-  },  
+    icon: 'finger-print'
+   },  
+  {
+    title:'البوابة الإلكترونية',
+    url:'/menu/card',
+    icon: 'card'
+   }  ,
   {   
      title:'رصيد الاجازات',
     url:'/menu/vacation',
@@ -45,9 +49,14 @@ pages = [
     title:'هواتف الشركة',
     url:'/menu/contact',
     icon: 'contacts'
-   }  
-
-];
+   }  ,
+   {
+    title:'عن التطبيق',
+    url:'/menu/contact-us',
+    icon: 'information-circle'
+   }   
+  
+ ];
 selectpath = '';
 
   constructor(private router: Router) { 

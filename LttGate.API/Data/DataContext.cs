@@ -15,5 +15,10 @@ namespace LttGate.API.Data
         public DbSet<Contact> Contact { get; set; }
          public DbSet<Advert> Advert { get; set; }
 
+        public DbSet<Idetecktb> Idetecktb { get; set; }
+
+
+         
+
     }
 }

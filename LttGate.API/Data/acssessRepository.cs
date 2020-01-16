@@ -17,9 +17,8 @@ namespace LttGate.API.Data
         }
         public async Task<PagedList<AccessLog>> GetDataAsync(acssessParams acssessParams)
         {
-            var AcssessData = _context.AccessLog.OrderByDescending(x => x.LogDate).AsQueryable(); ;
-            AcssessData = AcssessData.Where(x => x.EmployeeId == getEniUserByid(acssessParams.id));
-            return await PagedList<AccessLog>.CreateAsync(AcssessData, acssessParams.PageNumber, acssessParams.PageSize);
+            var AcssessData = _context.AccessLog.Where(x => x.EmployeeId == getEniUserByid(acssessParams.id)).OrderByDescending(x => x.LogDate).AsQueryable(); ;
+             return await PagedList<AccessLog>.CreateAsync(AcssessData, acssessParams.PageNumber, acssessParams.PageSize);
         }
         public async Task<EmployeeViewModel> GetDataByIdAsync(int id)
         {

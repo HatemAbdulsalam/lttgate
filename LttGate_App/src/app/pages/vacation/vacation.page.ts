@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Vaction } from 'src/app/models/Vaction';
+import { LoadingService } from 'src/app/services/Loading.service';
 
 @Component({
   selector: 'app-vacation',
@@ -10,7 +11,7 @@ import { Vaction } from 'src/app/models/Vaction';
 })
 export class VacationPage implements OnInit {
 vaction:Vaction
-  constructor(public loadingController: LoadingController ,private route: ActivatedRoute) { }
+  constructor(private load:LoadingService ,public loadingController: LoadingController ,private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(
@@ -18,6 +19,8 @@ vaction:Vaction
         this.vaction = data['vaction'];
          
       } )
+      this.load.dismiss();
+
   }
 
 }

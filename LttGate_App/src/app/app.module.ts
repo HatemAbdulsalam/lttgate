@@ -30,6 +30,11 @@ import { HomeResolver } from './resolvers/HomeResolver';
 import { LogDataVactionResolver } from './resolvers/LogDataVactionResolver';
 import { LogDataVactionService } from './services/LogDataVaction.service';
 import { LogDataEFVactionResolver } from './resolvers/LogDataEFVactionResolver';
+import { Network } from '@ionic-native/network/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+import { CardService } from './services/Card.service';
+import { CardResolver } from './resolvers/CardResolver';
+
  
  
  
@@ -55,11 +60,15 @@ import { LogDataEFVactionResolver } from './resolvers/LogDataEFVactionResolver';
     AdvertService,
     AcssessResolver,
     AcssessService,
+    CardService,
+    CardResolver,
     HomeResolver,
     LogDataVactionResolver,
     LogDataVactionService,
     LogDataEFVactionResolver,
-    [DatePipe]
+    [DatePipe],
+    Network,
+    AppVersion
   ],
   bootstrap: [AppComponent]
 })

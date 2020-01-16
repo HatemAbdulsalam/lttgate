@@ -13,6 +13,7 @@ import { AcssessResolver } from 'src/app/resolvers/AcssessResolver';
 import { HomeResolver } from 'src/app/resolvers/HomeResolver';
 import { LogDataVactionResolver } from 'src/app/resolvers/LogDataVactionResolver';
 import { LogDataEFVactionResolver } from 'src/app/resolvers/LogDataEFVactionResolver';
+import { CardResolver } from 'src/app/resolvers/CardResolver';
  
  
 const routes: Routes = [
@@ -29,6 +30,8 @@ const routes: Routes = [
    { path: 'logefvaction', loadChildren: '../logefvaction/logefvaction.module#LogefvactionPageModule',resolve:{logef:  LogDataEFVactionResolver } },
    { path: 'advert', loadChildren: '../advert/advert.module#AdvertPageModule' ,resolve:{advert:  AdvertResolver }},
    { path: 'contact', loadChildren: '../contact/contact.module#ContactPageModule',resolve:{contact:  ContactResolver }},
+   { path: 'contact-us', loadChildren: '../contact-us/contact-us.module#ContactUsPageModule' },
+   { path: 'card', loadChildren: '../card/card.module#CardPageModule',resolve:{card:  CardResolver }},
 
     ]
   }

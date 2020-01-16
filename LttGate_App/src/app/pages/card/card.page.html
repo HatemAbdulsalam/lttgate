@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>البوابة الالكترونية</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+<ion-grid>
+<ion-row >
+ <ion-col>
+ <h3>
+التاريخ </h3>
+
+     </ion-col>
+    <ion-col> <h3>
+
+التوقيت </h3>
+
+    </ion-col>
+    <ion-col> <h3>
+
+ الحالة </h3>
+
+    </ion-col>
+  </ion-row>
+ 
+  <ion-row  *ngFor="let item of  acssess">
+    <ion-col>
+ 
+    <div class="center"> {{datepipe.transform(item?.sortEventTime, 'yyyy-MM-dd')}}</div>
+     </ion-col>
+    <ion-col>
+    <div class="center"> {{datepipe.transform(item?.sortEventTime, 'hh:mm:ss')}}</div>
+    </ion-col>
+
+    <ion-col *ngIf="item.deviceIdx === 1 || item.deviceIdx === 3 || item.deviceIdx === 5">
+     <div class="center">
+<ion-icon name="arrow-round-up"  color="success"></ion-icon>
+دخول
+</div>
+    </ion-col>
+    <ion-col *ngIf="item.deviceIdx === 2 || item.deviceIdx === 4 || item.deviceIdx === 6">
+         <div class="center">
+         <ion-icon name="arrow-round-down"  color="danger"></ion-icon>
+خروج
+</div>
+    </ion-col> 
+
+      <ion-col *ngIf="item.deviceIdx === 50    " >
+         <div class="center">
+<ion-icon name="arrow-round-up"  color="success"></ion-icon>
+    المصرف
+   </div>
+    </ion-col>
+
+ <ion-col *ngIf="item.deviceIdx === 51" >
+         <div class="center">
+         <ion-icon name="arrow-round-down"  color="danger"></ion-icon>
+      المصرف
+   </div>
+    </ion-col>
+         <ion-col *ngIf="item.deviceIdx === 49   ">
+         <div class="center">
+CC
+ </div >
+    </ion-col>
+
+    <ion-col *ngIf="item.deviceIdx === 19" >
+         <div class="center">
+         19
+    </div>
+    </ion-col>
+
+     <ion-col *ngIf="item.deviceIdx === 0" >
+         <div class="center">
+0
+    </div>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="تحميل المزيد...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
