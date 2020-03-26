@@ -23,6 +23,12 @@ pages = [
     url:'/menu/card',
     icon: 'card'
    }  ,
+   {
+    title:'الموظفين التابعين',
+    url:'/menu/manager',
+    icon: 'people'
+   }  ,
+   
   {   
      title:'رصيد الاجازات',
     url:'/menu/vacation',

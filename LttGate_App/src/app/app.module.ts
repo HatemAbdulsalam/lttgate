@@ -34,6 +34,8 @@ import { Network } from '@ionic-native/network/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { CardService } from './services/Card.service';
 import { CardResolver } from './resolvers/CardResolver';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
  
  
@@ -41,7 +43,7 @@ import { CardResolver } from './resolvers/CardResolver';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

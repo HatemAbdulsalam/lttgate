@@ -32,6 +32,7 @@ const routes: Routes = [
    { path: 'contact', loadChildren: '../contact/contact.module#ContactPageModule',resolve:{contact:  ContactResolver }},
    { path: 'contact-us', loadChildren: '../contact-us/contact-us.module#ContactUsPageModule' },
    { path: 'card', loadChildren: '../card/card.module#CardPageModule',resolve:{card:  CardResolver }},
+   { path: 'manager', loadChildren: '../manager/manager.module#ManagerPageModule' },
 
     ]
   }
